@@ -1,0 +1,70 @@
+{
+  "name": "@entrolytics/vue-sdk",
+  "version": "2.0.0",
+  "description": "Vue SDK for Entrolytics - First-party growth analytics for the edge",
+  "keywords": [
+    "entrolytics",
+    "analytics",
+    "vue",
+    "vue3",
+    "web-analytics",
+    "tracking"
+  ],
+  "author": "Entrolytics <hey@ng.entrolytics.click>",
+  "license": "MIT",
+  "homepage": "https://ng.entrolytics.click",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/entrolytics/vue-sdk",
+    "directory": "entro-vue"
+  },
+  "bugs": {
+    "url": "https://github.com/entrolytics/vue-sdk/issues"
+  },
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "vue": "./dist/index.js",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=24.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "lint": "biome check --write .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.3.8",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vue": "^3.5.25"
+  },
+  "peerDependencies": {
+    "vue": ">=3.3.0",
+    "vue-router": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue-router": {
+      "optional": true
+    }
+  }
+}
