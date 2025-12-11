@@ -1,6 +1,6 @@
 # @entrolytics/vue
 
-Vue 3 SDK for [Entrolytics](https://ng.entrolytics.click) - First-party growth analytics for the edge.
+Vue SDK for [Entrolytics](https://ng.entrolytics.click) - First-party growth analytics for the edge.
 
 ## Installation
 
