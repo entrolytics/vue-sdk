@@ -1,13 +1,83 @@
-# @entrolytics/vue
+<div align="center">
+  <img src="https://raw.githubusercontent.com/entrolytics/.github/main/media/entrov2.png" alt="Entrolytics" width="64" height="64">
 
-Vue SDK for [Entrolytics](https://ng.entrolytics.click) - First-party growth analytics for the edge.
+  [![npm](https://img.shields.io/npm/v/@entrolytics/vue-sdk.svg?logo=npm)](https://www.npmjs.com/package/@entrolytics/vue-sdk)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+  [![Vue](https://img.shields.io/badge/Vue-3.3+-4FC08D.svg?logo=vue.js&logoColor=white)](https://vuejs.org/)
+
+</div>
+
+---
+
+## Overview
+
+**@entrolytics/vue-sdk** is the official Vue SDK for Entrolytics - first-party growth analytics for the edge. Add powerful analytics to your Vue 3 applications with zero configuration.
+
+**Why use this SDK?**
+- Zero-config setup with automatic environment detection
+- Full Vue 3 Composition API support with composables
+- TypeScript-first with complete type definitions
+- Edge-optimized with sub-50ms response times globally
+
+## Key Features
+
+<table>
+<tr>
+<td width="50%">
+
+### Analytics
+- Automatic page view tracking
+- Custom event tracking
+- User identification
+- Cross-domain tracking
+
+</td>
+<td width="50%">
+
+### Developer Experience
+- Vue plugin architecture
+- Composables API (`useTrackEvent`, `useIdentify`)
+- Global `$entrolytics` property
+- Full TypeScript support
+
+</td>
+</tr>
+</table>
+
+## Quick Start
+
+<table>
+<tr>
+<td align="center" width="25%">
+<img src="https://api.iconify.design/lucide:download.svg?color=%236366f1" width="48"><br>
+<strong>1. Install</strong><br>
+<code>npm i @entrolytics/vue-sdk</code>
+</td>
+<td align="center" width="25%">
+<img src="https://api.iconify.design/lucide:code.svg?color=%236366f1" width="48"><br>
+<strong>2. Add Plugin</strong><br>
+<code>app.use(createEntrolytics())</code>
+</td>
+<td align="center" width="25%">
+<img src="https://api.iconify.design/lucide:settings.svg?color=%236366f1" width="48"><br>
+<strong>3. Configure</strong><br>
+Set Website ID in <code>.env</code>
+</td>
+<td align="center" width="25%">
+<img src="https://api.iconify.design/lucide:bar-chart-3.svg?color=%236366f1" width="48"><br>
+<strong>4. Track</strong><br>
+View analytics in dashboard
+</td>
+</tr>
+</table>
 
 ## Installation
 
 ```bash
-npm install @entrolytics/vue
+npm install @entrolytics/vue-sdk
 # or
-pnpm add @entrolytics/vue
+pnpm add @entrolytics/vue-sdk
 ```
 
 ## Quick Start
