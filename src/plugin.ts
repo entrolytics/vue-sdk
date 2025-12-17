@@ -131,10 +131,7 @@ export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
     env.VITE_ENTROLYTICS_NG_WEBSITE_ID ||
     env.VITE_PUBLIC_ENTROLYTICS_NG_WEBSITE_ID;
 
-  const host =
-    options.host ||
-    env.VITE_ENTROLYTICS_HOST ||
-    env.VITE_PUBLIC_ENTROLYTICS_HOST;
+  const host = options.host || env.VITE_ENTROLYTICS_HOST || env.VITE_PUBLIC_ENTROLYTICS_HOST;
 
   if (!websiteId) {
     if (env.DEV) {
