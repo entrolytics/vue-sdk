@@ -1,11 +1,34 @@
 import { type App, type InjectionKey, inject, type Ref, ref } from 'vue';
 
-const DEFAULT_HOST = 'https://ng.entrolytics.click';
+const DEFAULT_HOST = 'https://entrolytics.click';
 const SCRIPT_ID = 'entrolytics-script';
 
-export interface EventData {
-  [key: string]: string | number | boolean | EventData | string[] | number[] | EventData[];
+/**
+ * Event payload type - mirrors @entrolytics/shared EventPayload
+ * TODO: Import from @entrolytics/shared once published with EventPayload export
+ */
+interface EventPayload {
+  websiteId: string;
+  sessionId: string;
+  visitorId: string;
+  url: string;
+  referrer?: string;
+  eventType: string;
+  eventName?: string;
+  properties?: Record<string, unknown>;
+  screenWidth?: number;
+  screenHeight?: number;
+  loadTime?: number;
+  domInteractive?: number;
+  domComplete?: number;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  utmTerm?: string;
+  utmContent?: string;
 }
+
+export type EventData = NonNullable<EventPayload['properties']>;
 
 export interface EntrolyticsOptions {
   websiteId: string;
@@ -128,15 +151,15 @@ export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
   const env = (import.meta as any).env || {};
   const websiteId =
     options.websiteId ||
-    env.VITE_ENTROLYTICS_NG_WEBSITE_ID ||
-    env.VITE_PUBLIC_ENTROLYTICS_NG_WEBSITE_ID;
+    env.VITE_ENTROLYTICS_WEBSITE_ID ||
+    env.VITE_PUBLIC_ENTROLYTICS_WEBSITE_ID;
 
   const host = options.host || env.VITE_ENTROLYTICS_HOST || env.VITE_PUBLIC_ENTROLYTICS_HOST;
 
   if (!websiteId) {
     if (env.DEV) {
       console.warn(
-        '[@entrolytics/vue] Missing websiteId. Add VITE_ENTROLYTICS_NG_WEBSITE_ID to your .env file or pass as option.',
+        '[@entrolytics/vue] Missing websiteId. Add VITE_ENTROLYTICS_WEBSITE_ID to your .env file or pass as option.',
       );
     }
     throw new Error('[@entrolytics/vue] websiteId is required');
@@ -179,7 +202,7 @@ export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
         (payload as Record<string, unknown>).tag = currentTag;
       }
 
-      window.entrolytics?.track(eventName, eventData);
+      window.entrolytics?.track(eventName, eventData as Record<string, any>);
     });
   };
 

@@ -99,8 +99,8 @@ app.mount('#app');
 Add to your `.env` file:
 
 ```bash
-VITE_ENTROLYTICS_NG_WEBSITE_ID=your-website-id
-VITE_ENTROLYTICS_HOST=https://ng.entrolytics.click
+VITE_ENTROLYTICS_WEBSITE_ID=your-website-id
+VITE_ENTROLYTICS_HOST=https://entrolytics.click
 ```
 
 ## Configuration Options
@@ -108,7 +108,7 @@ VITE_ENTROLYTICS_HOST=https://ng.entrolytics.click
 ### Zero-Config (Recommended)
 
 ```ts
-// Reads from VITE_ENTROLYTICS_NG_WEBSITE_ID and VITE_ENTROLYTICS_HOST
+// Reads from VITE_ENTROLYTICS_WEBSITE_ID and VITE_ENTROLYTICS_HOST
 app.use(createEntrolytics());
 ```
 
@@ -120,7 +120,7 @@ createEntrolytics({
   websiteId: 'your-website-id',
 
   // Optional: Custom host (for self-hosted)
-  host: 'https://ng.entrolytics.click',
+  host: 'https://entrolytics.click',
 
   // Optional: Auto-track page views (default: true)
   autoTrack: true,

@@ -1,6 +1,6 @@
 {
   "name": "@entrolytics/vue-sdk",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Vue SDK for Entrolytics - First-party growth analytics for the edge",
   "keywords": [
     "entrolytics",
@@ -10,9 +10,9 @@
     "web-analytics",
     "tracking"
   ],
-  "author": "Entrolytics <hey@ng.entrolytics.click>",
+  "author": "Entrolytics <hey@entrolytics.click>",
   "license": "MIT",
-  "homepage": "https://ng.entrolytics.click",
+  "homepage": "https://entrolytics.click",
   "repository": {
     "type": "git",
     "url": "https://github.com/entrolytics/vue-sdk",
@@ -40,7 +40,7 @@
   ],
   "sideEffects": false,
   "engines": {
-    "node": ">=24.x"
+    "node": ">=22.x"
   },
   "publishConfig": {
     "access": "public"
@@ -53,7 +53,7 @@
     "prepublishOnly": "pnpm build"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.10",
+    "@biomejs/biome": "2.3.11",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vue": "^3.5.26"
@@ -66,5 +66,8 @@
     "vue-router": {
       "optional": true
     }
+  },
+  "dependencies": {
+    "@entrolytics/shared": "^2.0.6"
   }
 }
