@@ -1,10 +1,10 @@
 <div align="center">
-  <img src="https://raw.githubusercontent.com/entrolytics/.github/main/media/entrov2.png" alt="Entrolytics" width="64" height="64">
+- <img src="https://raw.githubusercontent.com/entrolytics/.github/main/media/entrov2.png" alt="Entrolytics" width="64" height="64">
 
-  [![npm](https://img.shields.io/npm/v/@entrolytics/vue-sdk.svg?logo=npm)](https://www.npmjs.com/package/@entrolytics/vue-sdk)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Vue](https://img.shields.io/badge/Vue-3.3+-4FC08D.svg?logo=vue.js&logoColor=white)](https://vuejs.org/)
+[![npm](https://img.shields.io/npm/v/@entrolytics/vue-sdk.svg?logo=npm)](https://www.npmjs.com/package/@entrolytics/vue-sdk)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?logo=typescript\&logoColor=white)](https://www.typescriptlang.org/)
+[![Vue](https://img.shields.io/badge/Vue-3.3+-4FC08D.svg?logo=vue.js\&logoColor=white)](https://vuejs.org/)
 
 </div>
 
@@ -15,6 +15,7 @@
 **@entrolytics/vue-sdk** is the official Vue SDK for Entrolytics - first-party growth analytics for the edge. Add powerful analytics to your Vue 3 applications with zero configuration.
 
 **Why use this SDK?**
+
 - Zero-config setup with automatic environment detection
 - Full Vue 3 Composition API support with composables
 - TypeScript-first with complete type definitions
@@ -27,6 +28,7 @@
 <td width="50%">
 
 ### Analytics
+
 - Automatic page view tracking
 - Custom event tracking
 - User identification
@@ -36,6 +38,7 @@
 <td width="50%">
 
 ### Developer Experience
+
 - Vue plugin architecture
 - Composables API (`useTrackEvent`, `useIdentify`)
 - Global `$entrolytics` property
@@ -76,7 +79,9 @@ View analytics in dashboard
 
 ```bash
 npm install @entrolytics/vue-sdk
+
 # or
+
 pnpm add @entrolytics/vue-sdk
 ```
 
@@ -145,13 +150,13 @@ The `useEdgeRuntime` option controls which collection endpoint is used:
 ```ts
 createEntrolytics({
   websiteId: 'your-website-id',
-  useEdgeRuntime: true // or omit (default)
+  useEdgeRuntime: true, // or omit (default)
 });
 ```
 
 - **Latency**: Sub-50ms response times globally
 - **Best for**: Production Vue applications, globally distributed users
-- **Endpoint**: Uses `/api/send-native` for edge-to-edge communication
+- **Tracker Bundle**: Loads `/script-edge.js` (edge-optimized)
 - **Limitations**: No ClickHouse export, basic geo data
 
 **Node.js Runtime** - Full-featured with advanced capabilities:
@@ -159,16 +164,17 @@ createEntrolytics({
 ```ts
 createEntrolytics({
   websiteId: 'your-website-id',
-  useEdgeRuntime: false
+  useEdgeRuntime: false,
 });
 ```
 
 - **Features**: ClickHouse export, MaxMind GeoIP (city-level accuracy)
 - **Best for**: Self-hosted deployments, advanced analytics requirements
-- **Endpoint**: Uses `/api/send` for Node.js runtime
+- **Tracker Bundle**: Loads `/script.js` (standard runtime)
 - **Latency**: 50-150ms (regional)
 
 **When to use Node.js runtime**:
+
 - Self-hosted Vue deployments without edge runtime support
 - Applications requiring ClickHouse data export
 - Need for advanced geo-targeting with MaxMind
@@ -210,7 +216,7 @@ function handlePurchase() {
   track('purchase', {
     revenue: 99.99,
     currency: 'USD',
-    product_id: 'pro-plan'
+    product_id: 'pro-plan',
   });
 }
 </script>
@@ -242,11 +248,11 @@ import { useIdentify } from '@entrolytics/vue';
 const { identify } = useIdentify();
 
 // When user logs in
-watch(user, (newUser) => {
+watch(user, newUser => {
   if (newUser) {
     identify(newUser.id, {
       email: newUser.email,
-      plan: newUser.subscription
+      plan: newUser.subscription,
     });
   }
 });
@@ -263,9 +269,9 @@ export default {
   methods: {
     trackClick() {
       this.$entrolytics.track('button_click');
-    }
-  }
-}
+    },
+  },
+};
 </script>
 ```
 
@@ -274,10 +280,7 @@ export default {
 Full TypeScript support with exported types:
 
 ```ts
-import type {
-  EntrolyticsOptions,
-  EntrolyticsInstance
-} from '@entrolytics/vue';
+import type { EntrolyticsOptions, EntrolyticsInstance } from '@entrolytics/vue';
 ```
 
 ## License

@@ -1,32 +1,8 @@
+import type { EventPayload } from '@entrolytics/shared';
 import { type App, type InjectionKey, inject, type Ref, ref } from 'vue';
 
 const DEFAULT_HOST = 'https://entrolytics.click';
 const SCRIPT_ID = 'entrolytics-script';
-
-/**
- * Event payload type - mirrors @entrolytics/shared EventPayload
- * TODO: Import from @entrolytics/shared once published with EventPayload export
- */
-interface EventPayload {
-  websiteId: string;
-  sessionId: string;
-  visitorId: string;
-  url: string;
-  referrer?: string;
-  eventType: string;
-  eventName?: string;
-  properties?: Record<string, unknown>;
-  screenWidth?: number;
-  screenHeight?: number;
-  loadTime?: number;
-  domInteractive?: number;
-  domComplete?: number;
-  utmSource?: string;
-  utmMedium?: string;
-  utmCampaign?: string;
-  utmTerm?: string;
-  utmContent?: string;
-}
 
 export type EventData = NonNullable<EventPayload['properties']>;
 
@@ -147,12 +123,14 @@ function injectScript(options: EntrolyticsOptions, onLoad?: () => void): void {
  */
 export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
   // Auto-read from environment variables (Vite)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const env = (import.meta as any).env || {};
+  const env =
+    (
+      import.meta as ImportMeta & {
+        env?: Record<string, string | boolean | undefined>;
+      }
+    ).env ?? {};
   const websiteId =
-    options.websiteId ||
-    env.VITE_ENTROLYTICS_WEBSITE_ID ||
-    env.VITE_PUBLIC_ENTROLYTICS_WEBSITE_ID;
+    options.websiteId || env.VITE_ENTROLYTICS_WEBSITE_ID || env.VITE_PUBLIC_ENTROLYTICS_WEBSITE_ID;
 
   const host = options.host || env.VITE_ENTROLYTICS_HOST || env.VITE_PUBLIC_ENTROLYTICS_HOST;
 
@@ -202,7 +180,7 @@ export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
         (payload as Record<string, unknown>).tag = currentTag;
       }
 
-      window.entrolytics?.track(eventName, eventData as Record<string, any>);
+      window.entrolytics?.track(eventName, eventData as Record<string, unknown>);
     });
   };
 

@@ -1,27 +1,33 @@
 {
   "name": "@entrolytics/vue-sdk",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Vue SDK for Entrolytics - First-party growth analytics for the edge",
   "keywords": [
-    "entrolytics",
     "analytics",
+    "entrolytics",
+    "tracking",
     "vue",
     "vue3",
-    "web-analytics",
-    "tracking"
+    "web-analytics"
   ],
-  "author": "Entrolytics <hey@entrolytics.click>",
-  "license": "MIT",
   "homepage": "https://entrolytics.click",
+  "bugs": {
+    "url": "https://github.com/entrolytics/vue-sdk/issues"
+  },
+  "license": "MIT",
+  "author": "Entrolytics <hey@entrolytics.click>",
   "repository": {
     "type": "git",
     "url": "https://github.com/entrolytics/vue-sdk",
     "directory": "entro-vue"
   },
-  "bugs": {
-    "url": "https://github.com/entrolytics/vue-sdk/issues"
-  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -33,41 +39,42 @@
       "require": "./dist/index.cjs"
     }
   },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
-  "sideEffects": false,
-  "engines": {
-    "node": ">=22.x"
-  },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "dev": "tsup --watch",
-    "build": "tsup",
-    "lint": "biome check --write .",
-    "typecheck": "tsc --noEmit",
-    "prepublishOnly": "pnpm build"
+    "build": "vp pack",
+    "check": "vp check",
+    "dev": "vp pack --watch",
+    "lint": "vp lint --fix . && vp fmt --write .",
+    "prepublishOnly": "vp run build",
+    "typecheck": "tsgo --noEmit"
+  },
+  "dependencies": {
+    "@entrolytics/shared": "^2.4.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.11",
-    "tsup": "^8.5.1",
-    "typescript": "^5.9.3",
-    "vue": "^3.5.26"
+    "typescript": "^6.0.2",
+    "vite-plus": "latest",
+    "vue": "^3.5.31"
   },
   "peerDependencies": {
-    "vue": ">=3.3.0",
-    "vue-router": ">=4.0.0"
+    "vue": ">=3.5.28",
+    "vue-router": ">=5.0.2"
   },
   "peerDependenciesMeta": {
     "vue-router": {
       "optional": true
     }
   },
-  "dependencies": {
-    "@entrolytics/shared": "^2.0.6"
+  "engines": {
+    "node": ">=24.x"
+  },
+  "packageManager": "pnpm@10.33.0",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
   }
 }
