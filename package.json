@@ -48,15 +48,15 @@
     "dev": "vp pack --watch",
     "lint": "vp lint --fix . && vp fmt --write .",
     "prepublishOnly": "vp run build",
-    "typecheck": "tsgo --noEmit"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@entrolytics/shared": "^2.4.0"
+    "@entrolytics/shared": "^2.4.2"
   },
   "devDependencies": {
-    "typescript": "^6.0.2",
+    "typescript": "^7.0.2",
     "vite-plus": "latest",
-    "vue": "^3.5.31"
+    "vue": "^3.5.41"
   },
   "peerDependencies": {
     "vue": ">=3.5.28",
@@ -68,9 +68,9 @@
     }
   },
   "engines": {
-    "node": ">=24.x"
+    "node": ">=24.19.0"
   },
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@11.21.0",
   "pnpm": {
     "overrides": {
       "vite": "npm:@voidzero-dev/vite-plus-core@latest",

@@ -3,8 +3,8 @@
 
 [![npm](https://img.shields.io/npm/v/@entrolytics/vue-sdk.svg?logo=npm)](https://www.npmjs.com/package/@entrolytics/vue-sdk)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?logo=typescript\&logoColor=white)](https://www.typescriptlang.org/)
-[![Vue](https://img.shields.io/badge/Vue-3.3+-4FC08D.svg?logo=vue.js\&logoColor=white)](https://vuejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6.svg?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![Vue](https://img.shields.io/badge/Vue-3.3+-4FC08D.svg?logo=vue.js&logoColor=white)](https://vuejs.org/)
 
 </div>
 
@@ -130,9 +130,6 @@ createEntrolytics({
   // Optional: Auto-track page views (default: true)
   autoTrack: true,
 
-  // Optional: Use edge-optimized endpoints (default: true)
-  useEdgeRuntime: true,
-
   // Optional: Respect Do Not Track (default: false)
   respectDnt: false,
 
@@ -141,44 +138,7 @@ createEntrolytics({
 });
 ```
 
-### Runtime Configuration
-
-The `useEdgeRuntime` option controls which collection endpoint is used:
-
-**Edge Runtime (default)** - Optimized for speed and global distribution:
-
-```ts
-createEntrolytics({
-  websiteId: 'your-website-id',
-  useEdgeRuntime: true, // or omit (default)
-});
-```
-
-- **Latency**: Sub-50ms response times globally
-- **Best for**: Production Vue applications, globally distributed users
-- **Tracker Bundle**: Loads `/script-edge.js` (edge-optimized)
-- **Limitations**: No ClickHouse export, basic geo data
-
-**Node.js Runtime** - Full-featured with advanced capabilities:
-
-```ts
-createEntrolytics({
-  websiteId: 'your-website-id',
-  useEdgeRuntime: false,
-});
-```
-
-- **Features**: ClickHouse export, MaxMind GeoIP (city-level accuracy)
-- **Best for**: Self-hosted deployments, advanced analytics requirements
-- **Tracker Bundle**: Loads `/script.js` (standard runtime)
-- **Latency**: 50-150ms (regional)
-
-**When to use Node.js runtime**:
-
-- Self-hosted Vue deployments without edge runtime support
-- Applications requiring ClickHouse data export
-- Need for advanced geo-targeting with MaxMind
-- Custom server-side analytics workflows
+The plugin loads the canonical `/script.js` tracker from the configured host.
 
 ## Composables
 

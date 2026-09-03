@@ -1,7 +1,7 @@
 import type { EventPayload } from '@entrolytics/shared';
 import { type App, type InjectionKey, inject, type Ref, ref } from 'vue';
 
-const DEFAULT_HOST = 'https://entrolytics.click';
+const DEFAULT_HOST = 'https://api.entrolytics.click';
 const SCRIPT_ID = 'entrolytics-script';
 
 export type EventData = NonNullable<EventPayload['properties']>;
@@ -12,8 +12,6 @@ export interface EntrolyticsOptions {
   autoTrack?: boolean;
   respectDnt?: boolean;
   domains?: string[];
-  /** Use edge runtime endpoints for faster response times (default: true) */
-  useEdgeRuntime?: boolean;
   /** Custom tag for A/B testing */
   tag?: string;
   /** Strip query parameters from URLs */
@@ -61,7 +59,6 @@ function injectScript(options: EntrolyticsOptions, onLoad?: () => void): void {
     autoTrack = true,
     respectDnt = false,
     domains,
-    useEdgeRuntime = true,
     tag,
     excludeSearch = false,
     excludeHash = false,
@@ -70,9 +67,7 @@ function injectScript(options: EntrolyticsOptions, onLoad?: () => void): void {
   const script = document.createElement('script');
   script.id = SCRIPT_ID;
 
-  // Use edge runtime script if enabled
-  const scriptPath = useEdgeRuntime ? '/script-edge.js' : '/script.js';
-  script.src = `${host.replace(/\/$/, '')}${scriptPath}`;
+  script.src = `${host.replace(/\/$/, '')}/script.js`;
   script.defer = true;
   script.dataset.websiteId = websiteId;
 
@@ -180,7 +175,7 @@ export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
         (payload as Record<string, unknown>).tag = currentTag;
       }
 
-      window.entrolytics?.track(eventName, eventData as Record<string, unknown>);
+      window.entrolytics?.track(eventName, eventData);
     });
   };
 
