@@ -2,6 +2,10 @@ import { defineConfig } from 'vite-plus';
 
 export default defineConfig({
   pack: {
+    // The CJS output cannot keep `import.meta`; readEnv() falls back to
+    // process.env there. Declaring the replacement makes that explicit instead
+    // of leaving it as a build warning.
+    transform: { define: { 'import.meta': '{}' } },
     entry: ['src/index.ts'],
     format: ['esm', 'cjs'],
     fixedExtension: false,

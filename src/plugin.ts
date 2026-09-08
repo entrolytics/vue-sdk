@@ -116,14 +116,28 @@ function injectScript(options: EntrolyticsOptions, onLoad?: () => void): void {
  * app.mount('#app');
  * ```
  */
+type EnvRecord = Record<string, string | boolean | undefined>;
+
+/**
+ * Read build-time configuration.
+ *
+ * Vite exposes it on `import.meta.env`, which exists only in the ESM output —
+ * the CJS build replaces `import.meta` with an empty object. Without a fallback
+ * every variable silently disappeared there, so CJS consumers relying on env
+ * configuration got "websiteId is required" instead of a working plugin.
+ * `process.env` is available in that build and carries the same names.
+ */
+function readEnv(): EnvRecord {
+  const viteEnv = (import.meta as ImportMeta & { env?: EnvRecord }).env;
+  if (viteEnv) return viteEnv;
+  // Reached through globalThis rather than the `process` global so this browser
+  // package does not need Node type definitions to compile.
+  const proc = (globalThis as { process?: { env?: EnvRecord } }).process;
+  return proc?.env ?? {};
+}
+
 export function createEntrolytics(options: Partial<EntrolyticsOptions> = {}) {
-  // Auto-read from environment variables (Vite)
-  const env =
-    (
-      import.meta as ImportMeta & {
-        env?: Record<string, string | boolean | undefined>;
-      }
-    ).env ?? {};
+  const env = readEnv();
   const websiteId =
     options.websiteId || env.VITE_ENTROLYTICS_WEBSITE_ID || env.VITE_PUBLIC_ENTROLYTICS_WEBSITE_ID;
 
