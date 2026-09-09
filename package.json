@@ -43,20 +43,21 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vp pack && tsc --emitDeclarationOnly --noEmit false",
-    "check": "vp check",
-    "dev": "vp pack --watch",
-    "lint": "vp lint --fix . && vp fmt --write .",
-    "prepublishOnly": "vp run build",
+    "build": "tsdown && tsc --emitDeclarationOnly --noEmit false",
+    "check": "tsc --noEmit",
+    "dev": "tsdown --watch",
+    "lint": "oxlint --fix . && oxfmt --write .",
+    "prepublishOnly": "pnpm build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@entrolytics/shared": "^3.0.1"
   },
   "devDependencies": {
+    "oxfmt": "^0.67.0",
+    "oxlint": "^1.82.0",
+    "tsdown": "^0.23.0",
     "typescript": "next",
-    "vite": "catalog:",
-    "vite-plus": "catalog:",
     "vue": "^3.5.42"
   },
   "peerDependencies": {
