@@ -105,7 +105,7 @@ Add to your `.env` file:
 
 ```bash
 VITE_ENTROLYTICS_WEBSITE_ID=your-website-id
-VITE_ENTROLYTICS_HOST=https://entrolytics.click
+VITE_ENTROLYTICS_HOST=https://entrolytics.dev
 ```
 
 ## Configuration Options
@@ -125,7 +125,7 @@ createEntrolytics({
   websiteId: 'your-website-id',
 
   // Optional: Custom host (for self-hosted)
-  host: 'https://entrolytics.click',
+  host: 'https://entrolytics.dev',
 
   // Optional: Auto-track page views (default: true)
   autoTrack: true,

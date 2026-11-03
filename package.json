@@ -10,12 +10,12 @@
     "vue3",
     "web-analytics"
   ],
-  "homepage": "https://entrolytics.click",
+  "homepage": "https://entrolytics.dev",
   "bugs": {
     "url": "https://github.com/entrolytics/vue-sdk/issues"
   },
   "license": "MIT",
-  "author": "Entrolytics <hey@entrolytics.click>",
+  "author": "Entrolytics <hey@entrolytics.dev>",
   "repository": {
     "type": "git",
     "url": "https://github.com/entrolytics/vue-sdk",
@@ -51,14 +51,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@entrolytics/shared": "^3.0.1"
+    "@entrolytics/shared": "^3.1.0"
   },
   "devDependencies": {
-    "oxfmt": "^0.67.0",
-    "oxlint": "^1.82.0",
-    "tsdown": "^0.23.0",
+    "oxfmt": "^0.76.0",
+    "oxlint": "^1.91.0",
+    "tsdown": "^0.23.5",
     "typescript": "next",
-    "vue": "^3.5.42"
+    "vue": "^3.5.44"
   },
   "peerDependencies": {
     "vue": ">=3.5.28",
@@ -70,7 +70,7 @@
     }
   },
   "engines": {
-    "node": ">=24.20.0"
+    "node": ">=24.22.2"
   },
-  "packageManager": "pnpm@11.26.0"
+  "packageManager": "pnpm@12.17.0"
 }

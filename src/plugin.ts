@@ -1,7 +1,7 @@
 import type { EventPayload } from '@entrolytics/shared';
 import { type App, type InjectionKey, inject, type Ref, ref } from 'vue';
 
-const DEFAULT_HOST = 'https://api.entrolytics.click';
+const DEFAULT_HOST = 'https://api.entrolytics.dev';
 const SCRIPT_ID = 'entrolytics-script';
 
 export type EventData = NonNullable<EventPayload['properties']>;
