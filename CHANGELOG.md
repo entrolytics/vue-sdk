@@ -5,6 +5,11 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+## [3.0.4] - 2026-11-26
+
 ### Changed
 
 - Built and released with pnpm 12.24.0. No code changes.
+
+[Unreleased]: https://github.com/entrolytics/vue-sdk/compare/v3.0.4...HEAD
+[3.0.4]: https://github.com/entrolytics/vue-sdk/releases/tag/v3.0.4
