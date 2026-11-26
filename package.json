@@ -51,14 +51,14 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@entrolytics/shared": "^3.1.0"
+    "@entrolytics/shared": "^3.2.0"
   },
   "devDependencies": {
-    "oxfmt": "^0.76.0",
-    "oxlint": "^1.91.0",
-    "tsdown": "^0.23.5",
+    "oxfmt": "^0.80.0",
+    "oxlint": "^1.95.0",
+    "tsdown": "^0.23.7",
     "typescript": "next",
-    "vue": "^3.5.44"
+    "vue": "^3.5.46"
   },
   "peerDependencies": {
     "vue": ">=3.5.28",
@@ -70,7 +70,7 @@
     }
   },
   "engines": {
-    "node": ">=24.22.2"
+    "node": ">=24.22.3"
   },
-  "packageManager": "pnpm@12.17.0"
+  "packageManager": "pnpm@12.23.0"
 }
