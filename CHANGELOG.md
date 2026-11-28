@@ -5,6 +5,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+## [3.0.5] - 2026-11-28
+
 ### Changed
 
 - Requires `@entrolytics/shared` 3.2.2.
@@ -15,5 +17,6 @@ All notable changes to this project are documented in this file. The format foll
 
 - Built and released with pnpm 12.24.0. No code changes.
 
-[Unreleased]: https://github.com/entrolytics/vue-sdk/compare/v3.0.4...HEAD
+[Unreleased]: https://github.com/entrolytics/vue-sdk/compare/v3.0.5...HEAD
+[3.0.5]: https://github.com/entrolytics/vue-sdk/compare/v3.0.4...v3.0.5
 [3.0.4]: https://github.com/entrolytics/vue-sdk/releases/tag/v3.0.4
