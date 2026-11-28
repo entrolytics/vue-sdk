@@ -5,6 +5,10 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [Unreleased]
 
+### Changed
+
+- Requires `@entrolytics/shared` 3.2.2.
+
 ## [3.0.4] - 2026-11-26
 
 ### Changed
